@@ -9,6 +9,7 @@ import Lab5 from "./lab5.js";
 import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
 import AssignmentRoutes from "./assignments/routes.js";
+import GradeRoutes from "./grades/routes.js";
 
 const app = express();
 app.use(express.json());
@@ -38,5 +39,6 @@ Hello(app);
 CourseRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
+GradeRoutes(app);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
