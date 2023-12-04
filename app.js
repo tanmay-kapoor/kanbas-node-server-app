@@ -3,10 +3,12 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import session from "express-session";
-
 import mongoose from "mongoose";
+
+const CONNECTION_STRING =
+    process.env.CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas";
 mongoose
-    .connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`)
+    .connect(CONNECTION_STRING)
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.log(err));
 
