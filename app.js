@@ -1,8 +1,13 @@
 import "dotenv/config";
-import session from "express-session";
 
 import express from "express";
 import cors from "cors";
+
+import mongoose from "mongoose";
+mongoose
+    .connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.log(err));
 
 import Hello from "./hello.js";
 import Lab5 from "./lab5.js";
@@ -10,6 +15,7 @@ import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
 import AssignmentRoutes from "./assignments/routes.js";
 import GradeRoutes from "./grades/routes.js";
+import UserRoutes from "./users/routes.js";
 
 const app = express();
 app.use(express.json());
@@ -40,5 +46,6 @@ CourseRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 GradeRoutes(app);
+UserRoutes(app);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
